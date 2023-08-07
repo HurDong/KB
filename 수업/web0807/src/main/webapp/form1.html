@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<form action="form_check.jsp" method="">
+		<input type="hidden" name="no" value="30">
+		ID : <input type="text" name="nm" value="kim" autofocus> <br>
+		PW : <input type="password" name="pwd" value="1234"> <br>
+		주소 : <input type="search" name="addr" placeholder="주소를 입력하세요" required><br>
+		성별 : 남 <input type="radio" name="gender" value="male">
+		여 <input type="radio" name="gender" value="femal"><br>
+		좋아하는 운동 :
+		<input type="checkbox" name="fav_sports" value="pingpong"> 탁구
+		<input type="checkbox" name="fav_sports" value="football"> 축구
+		<input type="checkbox" name="fav_sports" value="baseball"> 농구 <br>
+		회비 : <input type="number"><br>
+		부서 선택 :
+		<select name="dept" placeholder="부서를 선택하세요">
+			<option value="100">기획부</option>
+			<option value="200">영업부</option>
+			<option value="300">개발부</option>
+		</select> <br>
+		게시물 내용 :<br>
+		<textarea rows="5" cols="60" name="content"></textarea>
+		<input type="submit" value="보내기">
+		<input type="reset" value="다시입력">
+	</form>
+</body>
+
+</html>
