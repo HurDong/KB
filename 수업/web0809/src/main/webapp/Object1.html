@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		// 로또 번호 만들기
+		function make_lotto() {
+			var lotto = []
+			for (let i = 0; i < 6; i++) {
+				var r = Math.floor(Math.random() * 10 + 1)
+				lotto.push(r)
+			}
+			alert(lotto + " 로또 번호를 추가 했습니다.")
+		}
+		make_lotto()
+	</script>
+</head>
+
+<body>
+	<h1> 객체 연습</h1>
+</body>
+
+</html>

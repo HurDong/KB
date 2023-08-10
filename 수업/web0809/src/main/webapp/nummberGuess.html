@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>숫자 맞추기 게임.html</title>
+	<style>
+		#field {
+			width: 800px;
+			height: 200px;
+			border: 1px solid black;
+			margin: 0 auto;
+		}
+
+		h1,
+		p {
+			text-align: center;
+		}
+	</style>
+	<script>
+		var com_num = Math.floor(Math.random() * 100 + 1)
+		window.onload = function () {
+			// 정답 확인 버튼에 클릭 이벤트 등록
+			document.querySelector("#check_btn").onclick = function () {
+				// 입력 숫자 확인
+				var num = document.querySelector("#num").value
+				if (num == "") {
+					show_message("숫자를 입력하세요")
+					return
+				}
+				num = Number(num)
+				var msg = ""// 출력할 메시지
+				if (num == com_num) {
+					msg = "성공!"
+				} else if (num < com_num) {
+					msg = "업"
+				} else {
+					msg = "다운"
+				}
+				show_message(msg)
+			}
+			function show_message(msg) {
+				document.querySelector("#result").innerHTML = msg
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div id="field">
+		<h1>숫자 맞추기 게임</h1>
+		<p>컴퓨터가 정한 1~100 사이 난수를 맞춰 보세요</p>
+		<hr>
+		숫자 : <input id="num" type="number">
+		<button id="check_btn">정 답 확 인</button>
+		<div id="result"></div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>HTML CSS Practice</title>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		li {
+			color: crimson;
+		}
+
+		.blue_border {
+			border: 3px dotted blue;
+		}
+
+		.red_border {
+			border: 3px dotted red;
+		}
+
+		h1#cyan_bg {
+			background: cyan;
+		}
+
+		h1#cyan_bg {
+			background: purple;
+		}
+
+		ul>li {
+			color: blue;
+		}
+
+		.pink_bg {
+			background-color: pink;
+		}
+
+		li:hover {
+			border: 1px solid red;
+		}
+
+		input:focus {
+			border: 5px dotted red;
+		}
+
+		form>span {
+			display: none;
+		}
+
+		input:focus+span {
+			display: inline;
+		}
+
+		a {
+			text-decoration: none;
+			color: cyan;
+		}
+
+		a:hover {
+			text-decoration: underline;
+			color: darkgoldenrod;
+		}
+
+		h1 {
+			text-shadow: 5px 5px 3px cyan;
+		}
+
+		ul,
+		ol {
+			list-style: none;
+			padding: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 id="cyan_bg"> CSS 연습</h1>
+	<div>
+		<a href="http://naver.com">네이버</a><br>
+		<a href="http://daum.net">다음</a><br>
+	</div>
+	<ul>
+		<li class="blue_border pink_bg">HTML</li>
+		<li>CSS</li>
+		<li>JS</li>
+		<li>JQuery</li>
+		<li>BootStrap</li>
+	</ul>
+	<ol>
+		<li class="red_border">HTML</li>
+		<li>CSS</li>
+		<li>JS</li>
+		<li>JQuery</li>
+		<li>BootStrap</li>
+	</ol>
+	<form>
+		이름 : <input name="nm"><span>본인의 이름을 입력하세요</span><br>
+		비밀번호 : <input type="password" name="pwd">
+		<span> 본인의 비밀번호를 입력하세요</span><br>
+	</form>
+</body>
+
+</html>
+
+<!-- 
+	HTML 태그의 종류
+	1. Block Type 요소 : 자동으로 앞뒤 줄바꿈되는 태그
+						폭과 높이 조절 가능
+						<h1~h6> <div> <p> <ul> <ol> <dl> <li> <dt> <dd> ...
+	2. Inline Type 요소 : 앞뒤 줄바꿈 안되는 태그
+						폭, 높이 조절 안됨(내부콘텐트 크기에 맞춰 폭과 높이가 지정)
+						<a> <img> ...
+	개발자가 알아야하는 선택자
+	1. * : 전체 선택자
+	2. 태그 선택자 : 태그 이름, p, div
+	3. 클래스 선택자 : .abc : <... class="abc">
+	4. 아이디 선택자 : #xyz : <... id="xyz">
+	5. 선택자1 > 선택자2 : 선택자 1을 부모태그로 갖는 선택자2
+	6. 선택자1 선택자2 : 선택자 1을 조상으로 갖는 선택자2
+ -->

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#result {
+			width: 500px;
+			height: 300px;
+			border: 1px solid black;
+			font-size: 1000%;
+		}
+	</style>
+	<script>
+		var count = 0
+
+		function change_bg(color) {
+			document.querySelector("#result").style.background = color
+			document.querySelector("#result").innerHTML = ++count
+		}
+	</script>
+</head>
+
+<body>
+	<a href="#" onclick="change_bg('green')"> Green</a><br>
+	<a href="#" onclick="change_bg('orange')">Orange</a><br>
+	<div id="result"></div>
+</body>
+
+</html>
