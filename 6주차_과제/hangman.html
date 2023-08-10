@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman Game</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<!-- Hangman Game의 시작 화면 구성 부분 -->
+	<div id="top-banner">
+		<!-- 게임 진행 지시문 -->
+		<div id="instruction-box">글자를 입력하세요 주제는 동물입니다.</div>
+		<!-- 게임 로고 및 새로고침 기능 -->
+		<div id="logo" onclick="refreshPage()">Hangman</div>
+		<!-- 남은 기회를 표시하는 부분 -->
+		<div id="chances">남은 기회: <span id="remaining-chances">7</span></div>
+	</div>
+
+	<!-- 게임의 주요 화면 구성 부분 -->
+	<div id="hangman">
+		<!-- 행맨 이미지 -->
+		<img id="state" src="mistake0_state.png" alt="hangman">
+		<!-- 현재 추측된 단어 -->
+		<div id="word"></div>
+		<!-- 사용자가 추측할 수 있는 글자 -->
+		<div id="letters"></div>
+		<!-- 게임 결과 표시 -->
+		<div id="result"></div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script>
+		// 단어 리스트
+		var words = ["Dog", "Cow", "Cat", "Horse", "Donkey", "Tiger", "Lion", "Panther",
+			"Leopard", "Cheetah", "Bear", "Elephant", "Polar bear", "Turtle", "Tortoise", "Crocodile",
+			"Rabbit", "Porcupine", "Hare", "Hen", "Pigeon", "Albatross", "Crow", "Fish",
+			"Dolphin", "Frog", "Whale", "Alligator", "Eagle", "Flyingsquirrel", "Ostrich", "Fox",
+			"Goat", "Jackal", "Emu", "Armadillo", "Eel", "Goose", "Arcticfox", "Wolf",
+			"Beagle", "Gorilla", "Chimpanzee", "Monkey", "Beaver", "Orangutan", "Antelope", "Bat",
+			"Badger", "Giraffe", "HermitCrab", "GiantPanda", "Hamster", "Cobra", "Hammerheadshark", "Camel",
+			"Hawk", "Deer", "Chameleon", "Hippopotamus", "Jaguar", "Chihuahua", "KingCobra", "Ibex",
+			"Lizard", "Koala", "Kangaroo", "Iguana", "Llama", "Chinchillas", "Dodo", "Jellyfish",
+			"Rhinoceros", "Hedgehog", "Zebra", "Possum", "Wombat", "Bison", "Bull", "Buffalo",
+			"Sheep", "Meerkat", "Mouse", "Otter", "Sloth", "Owl", "Vulture", "Flamingo",
+			"Racoon", "Mole", "Duck", "Swan", "Lynx", "Monitorlizard", "Elk", "Boar",
+			"Lemur", "Mule", "Baboon", "Mammoth", "Bluewhale", "Rat", "Snake", "Peacock"] // 중략
+		// 랜덤으로 선택된 단어
+		var selectedWord = words[Math.floor(Math.random() * words.length)];
+		// 사용자가 추측한 단어를 표시하는 문자열
+		var guessedWord = "_".repeat(selectedWord.length);
+		// 실수한 횟수
+		var mistakes = 0;
+
+		// 화면 업데이트 함수
+		function updateDisplay() {
+			$("#word").text(guessedWord.split('').join(' '));
+			$("#state").attr("src", "mistake" + mistakes + "_state.png");
+			$("#remaining-chances").text(7 - mistakes);
+		}
+
+		// 페이지 새로 고침 함수
+		function refreshPage() {
+			location.reload();
+		}
+
+		// 게임 종료 함수
+		function endGame(message) {
+			alert(message);
+			location.reload();
+		}
+
+		// 글자 추측 함수
+		function guessLetter(letter) {
+			var correctGuess = false;
+			// 글자 추측 처리
+			for (var i = 0; i < selectedWord.length; i++) {
+				if (selectedWord[i].toUpperCase() === letter) {
+					guessedWord = guessedWord.substr(0, i) + letter + guessedWord.substr(i + 1);
+					correctGuess = true;
+				}
+			}
+			// 추측이 옳을 경우와 그렇지 않을 경우 처리
+			if (correctGuess) {
+				$('button:contains(' + letter + ')').css('color', 'blue').attr('disabled', true);
+			} else {
+				$('button:contains(' + letter + ')').css('color', 'red').attr('disabled', true);
+				mistakes++;
+			}
+			// 실수 횟수와 정답을 체크해 게임 종료 여부를 결정
+			if (mistakes >= 7) {
+				// 주석 중략
+			}
+			updateDisplay();
+			if (guessedWord.toUpperCase() === selectedWord.toUpperCase()) {
+				// 정답일 경우 처리
+				$("#instruction-box").hide();
+				setTimeout(function () {
+					endGame("추카추카~ 똑똑한 사람입니다");
+				}, 100);
+				return;
+			}
+		}
+
+		// 페이지 로드 완료 시 초기화 작업
+		$(document).ready(function () {
+			updateDisplay();
+			for (var i = 65; i <= 90; i++) {
+				var letter = String.fromCharCode(i);
+				$("#letters").append('<button onclick="guessLetter(\'' + letter + '\')">' + letter + '</button>');
+			}
+		});
+	</script>
+</body>
+
+</html>
