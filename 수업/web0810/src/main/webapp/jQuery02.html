@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changing Button</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var colors = ["red", "blue", "green", "yellow", "purple"]; // 원하는 색상을 추가하거나 변경
+            var index = 0;
+
+            setInterval(function() {
+                // 버튼의 배경색을 변경
+                $('button').css('background-color', colors[index]);
+
+                // 다음 색상으로 이동하거나 배열의 처음으로 돌아감
+                index = (index + 1) % colors.length;
+            }, 500); // 0.5초마다 변경
+        });
+    </script>
+</head>
+<body>
+    <button>색상 변경 버튼</button>
+</body>
+</html>
