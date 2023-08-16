@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax exam 2</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#get_data").click(function() {
+			let options = {
+				url : "data_list.json",
+				dataType : "json",
+				success : function(data) {
+					$("#result").html(data.length)
+					$.each(data, function(idx, v) {
+						$("#result").append(v + "<br>")
+					})
+				}
+			}
+			$.ajax(options)
+		})
+	})
+</script>
+</head>
+<body>
+	<button id="get_data">가져오기</button>
+	<div id="result"></div>
+</body>
+</html>

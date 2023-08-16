@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax exam 4</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#get_data").click(function() {
+			let options = {
+				url : "proxy_html.jsp",
+				dataType : "html",
+				success : function(data) {
+					$("#result").empty()//내용 모두삭제
+					$(data).find("ul.list_txt>li>a").each(function() {
+						$("#result").append(this.innerHTML + "<br>")
+					})
+
+				}
+			}
+			$.ajax(options)
+		})
+	})
+</script>
+</head>
+<body>
+
+	<button id="get_data">가져오기</button>
+	<div id="result"></div>
+
+</body>
+</html>

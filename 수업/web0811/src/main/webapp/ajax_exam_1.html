@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("#get_data").click(function() {
+        let options = {
+            url:"data.json",
+            dataType:"json",
+            success:function(data){
+                alert(data.no + " , " + data.name)
+            }
+        }
+        $.ajax(options)
+    })
+})
+</script>
+</head>
+<body>
+
+    <button id="get_data">가져오기</button>
+    <div id="result"></div>
+
+</body>
+</html>

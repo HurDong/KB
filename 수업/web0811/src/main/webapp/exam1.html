@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>환율 정보 가져오기</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>환율 정보</h1>
+	<button id="getRate">환율 가져오기</button>
+	<div id="rateInfo"></div>
+
+	<script type="text/javascript">
+		$('#getRate')
+				.click(
+						function() {
+							let options = {
+								url : "proxy_html2.jsp",
+								data : {
+									"url" : "https://search.naver.com/search.naver?ie=UTF-8&query=%ED%99%98%EC%9C%A8&sm=chr_hty"
+								},
+								dataType : "html",
+								success : function(data) {
+									// 제공된 선택자를 사용하여 환율 정보 추출
+									var rate = $(data)
+											.find(
+													'#_cs_foreigninfo > div:nth-child(1) > div.api_cs_wrap > div > div.c_rate > div.rate_table_bx._table > table > tbody > tr:nth-child(1) > td:nth-child(2) > span')
+											.text();
+									$('#rateInfo').text('USD 환율: ' + rate);
+								},
+								error : function() {
+									$('#rateInfo')
+											.text('환율 정보를 가져오는 데 실패했습니다.');
+								}
+							};
+							$.ajax(options);
+						});
+	</script>
+</body>
+</html>
